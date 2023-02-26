@@ -24,8 +24,8 @@ export interface User {
 export interface Paint {
   id: number;
   name?: string;
-  pigmentCode?: string;
-  pigmentNumber?: number;
+  pigment_code?: string;
+  pigment_number?: number;
   color: string;
   transparency: number;
   staining: number;
