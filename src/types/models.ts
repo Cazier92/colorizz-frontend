@@ -20,3 +20,25 @@ export interface User {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface Paint {
+  id: number;
+  name?: string;
+  pigmentCode?: string;
+  pigmentNumber?: number;
+  color: string;
+  transparency: number;
+  staining: number;
+  granulation: number;
+  brand: number;
+  profileId: {id: number};
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Palette {
+  id: number;
+  profileId: {id: number};
+  createdAt: string;
+  updatedAt: string;
+}
