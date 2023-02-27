@@ -59,7 +59,7 @@ const Paints = (props: PaintsProps): JSX.Element => {
           brand: formData.brand,
           profileId: formData.profileId
         }
-        paintService.addPaint(formData)
+        await paintService.addPaint(formData)
         setPaints([...paints, newPaint])
       }
 

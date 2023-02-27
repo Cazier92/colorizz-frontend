@@ -39,6 +39,7 @@ export interface Paint {
 
 export interface Palette {
   id: number;
+  name?: string;
   profileId: number;
   createdAt: string;
   updatedAt: string;

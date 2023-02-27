@@ -12,6 +12,11 @@ export interface PaintFormData {
   profileId: number;
 }
 
+export interface PaletteFormData {
+  name: string;
+  profileId: number;
+}
+
 /* ---------===== auth forms =====--------- */
 
 export interface LoginFormData {
