@@ -48,6 +48,7 @@ const UpdatePaint = (props: UpdatePaintProps): JSX.Element => {
   const handleUpdateButton = (): void => {
     setShowUpdate(!showUpdate)
   }
+  
   if (showUpdate === false) {
     return (
       <button onClick={handleUpdateButton}>Update Paint</button>

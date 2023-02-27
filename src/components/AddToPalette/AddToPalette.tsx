@@ -12,13 +12,19 @@ interface AddToPaletteProps {
 
 const AddToPalette = (props: AddToPaletteProps): JSX.Element => {
   const {paint, palettes, user} = props
+  const [showPalettes, setShowPalettes] = useState<boolean>(false)
 
-
-
+  const handleShowPalettesButton = (): void => {
+    setShowPalettes(!showPalettes)
+  }
 
   return (
     <>
-    <h5>Add to Palette</h5>
+    {showPalettes ? (<>
+      <button onClick={handleShowPalettesButton}>Discard Changes</button>
+    </>) : (<>
+      <button onClick={handleShowPalettesButton}>Add To Palette</button>
+    </>)}
     </>
   )
 }
