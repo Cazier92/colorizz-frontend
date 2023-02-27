@@ -32,6 +32,7 @@ function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
 
   const [palettes, setPalettes] = useState<Palette[]>([])
+  const [paintAssociated, setPaintAssociated] = useState<boolean>(false)
 
 
   useEffect((): void => {
@@ -45,6 +46,10 @@ function App(): JSX.Element {
       }
     }
     fetchPalettes()
+    if (paintAssociated === true) {
+      fetchPalettes()
+      setPaintAssociated(false)
+    }
   }, [])
 
   const handleLogout = (): void => {
@@ -57,7 +62,7 @@ function App(): JSX.Element {
     setUser(authService.getUser())
   }
 
-
+  console.log(paintAssociated)
 
   return (
     <>
@@ -92,14 +97,14 @@ function App(): JSX.Element {
         <Route 
           path="/paints"
           element={
-            <Paints user={user} palettes={palettes}/>
+            <Paints user={user} palettes={palettes} setPalettes={setPalettes} setPaintAssociated={setPaintAssociated} paintAssociated={paintAssociated}/>
           }
         />
         <Route 
           path="/palettes"
           element={
             <ProtectedRoute user={user}>
-              <Palettes user={user} palettes={palettes}/>
+              <Palettes user={user} palettes={palettes} paintAssociated={paintAssociated} setPaintAssociated={setPaintAssociated}/>
             </ProtectedRoute>
           }
         />

@@ -18,10 +18,13 @@ import AddToPalette from '../../components/AddToPalette/AddToPalette'
 interface PaintsProps {
   user: User | null;
   palettes: Palette[];
+  setPalettes: React.Dispatch<React.SetStateAction<Palette[]>>;
+  setPaintAssociated: React.Dispatch<React.SetStateAction<boolean>>;
+  paintAssociated: boolean;
 }
 
 const Paints = (props: PaintsProps): JSX.Element => {
-  const {user, palettes} = props
+  const {user, palettes, setPalettes, setPaintAssociated, paintAssociated} = props
   const [paints, setPaints] = useState<Paint[]>([])
   // const [showUpdate, setShowUpdate] = useState<boolean[]>([])
 
@@ -122,7 +125,7 @@ const Paints = (props: PaintsProps): JSX.Element => {
         <h2>Staining: {paint.staining}</h2>
         {paint.profileId === user?.profile.id && paint.id ?  (
       <>
-        <UpdatePaint handleUpdatePaint={handleUpdatePaint} user={user} paint={paint}/>
+        <UpdatePaint handleUpdatePaint={handleUpdatePaint} user={user} paint={paint} key={paint.id}/>
       </>
       )
     :
@@ -133,7 +136,7 @@ const Paints = (props: PaintsProps): JSX.Element => {
     }
       {user ? (
       <>
-        <AddToPalette palettes={palettes} paint={paint} user={user}/>
+        <AddToPalette palettes={palettes} paint={paint} user={user} setPalettes={setPalettes} setPaintAssociated={setPaintAssociated} paintAssociated={paintAssociated} key={paint.name}/>
       </>) : (<> </>)}
       </>
     )}

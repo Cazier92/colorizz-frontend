@@ -15,10 +15,12 @@ import CreatePalette from '../../components/CreatePalette/CreatePalette'
 interface PalettesProps {
   user: User | null;
   palettes: Palette[];
+  setPaintAssociated: React.Dispatch<React.SetStateAction<boolean>>;
+  paintAssociated: boolean;
 }
 
 const Palettes = (props: PalettesProps): JSX.Element => {
-  const {user, palettes} = props
+  const {user, palettes, setPaintAssociated, paintAssociated} = props
   // const [palettes, setPalettes] = useState<Palette[]>([])
   // const [showUpdate, setShowUpdate] = useState<boolean[]>([])
 
@@ -40,6 +42,7 @@ const Palettes = (props: PalettesProps): JSX.Element => {
     try {
       if (user !== null)
       await paletteService.createPalette(formData)
+      setPaintAssociated(!paintAssociated)
     } catch (error) {
       console.log(error);
     }
