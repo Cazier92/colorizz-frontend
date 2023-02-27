@@ -23,7 +23,7 @@ const AddPaint = (props: AddPaintProps): JSX.Element => {
     // staining: undefined,
     // granulation: undefined,
     // brand: undefined,
-    profileId: props.user.profile.id,
+    profileId: user.profile.id,
   })
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
