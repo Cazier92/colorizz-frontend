@@ -11,6 +11,7 @@ import { PaletteFormData } from '../../types/forms'
 
 // components
 import CreatePalette from '../../components/CreatePalette/CreatePalette'
+import RemovePaintBtn from './RemovePaintBtn'
 
 interface PalettesProps {
   user: User | null;
@@ -48,6 +49,15 @@ const Palettes = (props: PalettesProps): JSX.Element => {
     }
   }
 
+  const handleRemovePaint = async(palette: Palette, paint: Paint): Promise<void> => {
+    try {
+      await paletteService.removePaint(palette, paint)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  console.log(palettes[1])
+
   return (
     <>
     {user
@@ -71,7 +81,11 @@ const Palettes = (props: PalettesProps): JSX.Element => {
         }
         {palette.paints?.map((paint) => 
           <>
-            <h5>{paint.name}</h5>
+          
+          <div>
+            {/* <h1>{paint.name}</h1> */}
+            <RemovePaintBtn palette={palette} paint={paint} handleRemovePaint={handleRemovePaint}/>
+          </div>
           </>
         )}
       </>
