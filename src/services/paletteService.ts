@@ -11,7 +11,11 @@ const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/palettes`
 
 async function getAllPalettes(): Promise<Palette[]> {
   try {
-    const res = await fetch(BASE_URL)
+    const res = await fetch(BASE_URL, {
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+      }
+    })
     return await res.json() as Palette[]
   } catch (error) {
     throw error
@@ -19,5 +23,5 @@ async function getAllPalettes(): Promise<Palette[]> {
 }
 
 export {
-
+  getAllPalettes,
 }

@@ -9,6 +9,7 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Paints from './pages/Paints/Paints'
+import Palettes from './pages/Palettes/Palettes'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -74,6 +75,14 @@ function App(): JSX.Element {
           path="/paints"
           element={
             <Paints user={user}/>
+          }
+        />
+        <Route 
+          path="/palettes"
+          element={
+            <ProtectedRoute user={user}>
+              <Palettes user={user} />
+            </ProtectedRoute>
           }
         />
       </Routes>
