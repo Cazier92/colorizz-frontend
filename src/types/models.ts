@@ -27,11 +27,12 @@ export interface Paint {
   pigment_code?: string;
   pigment_number?: number;
   color: string;
-  transparency: number;
-  staining: number;
-  granulation: number;
-  brand: number;
-  profileId: {id: number};
+  transparency?: number;
+  staining?: number;
+  granulation?: number;
+  brand?: number;
+  // profileId: {id: number};
+  profileId: number;
   createdAt: string;
   updatedAt: string;
 }

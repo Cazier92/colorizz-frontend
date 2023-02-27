@@ -38,6 +38,8 @@ function App(): JSX.Element {
     setUser(authService.getUser())
   }
 
+
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -71,7 +73,7 @@ function App(): JSX.Element {
         <Route 
           path="/paints"
           element={
-            <Paints />
+            <Paints user={user}/>
           }
         />
       </Routes>

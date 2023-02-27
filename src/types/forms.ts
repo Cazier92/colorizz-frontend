@@ -1,6 +1,16 @@
 /* ---------==== custom forms ====--------- */
 
-
+export interface PaintFormData {
+  name: string;
+  pigment_code?: string;
+  pigment_number?: number;
+  color: string;
+  transparency?: number;
+  staining?: number;
+  granulation?: number;
+  brand?: number;
+  profileId: number;
+}
 
 /* ---------===== auth forms =====--------- */
 
