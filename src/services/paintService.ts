@@ -33,9 +33,10 @@ async function addPaint(formData: PaintFormData): Promise<Paint> {
   }
 }
 
-async function updatePaint(formData:PaintFormData, paintId: Paint["id"]): Promise<Paint> {
+async function updatePaint(formData:PaintFormData, paint: Paint): Promise<Paint> {
   try {
-    const res = await fetch(`${BASE_URL}/paintId`, {
+    const paintId = paint.id
+    const res = await fetch(`${BASE_URL}/${paintId}`, {
       method: "PUT",
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
@@ -52,4 +53,5 @@ async function updatePaint(formData:PaintFormData, paintId: Paint["id"]): Promis
 export {
   getAllPaints,
   addPaint,
+  updatePaint,
 }

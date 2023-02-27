@@ -22,8 +22,8 @@ export interface User {
 }
 
 export interface Paint {
-  id: number;
-  name?: string;
+  id?: number;
+  name: string;
   pigment_code?: string;
   pigment_number?: number;
   color: string;
@@ -33,13 +33,14 @@ export interface Paint {
   brand?: number;
   // profileId: {id: number};
   profileId: number;
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface Palette {
   id: number;
-  profileId: {id: number};
+  profileId: number;
   createdAt: string;
   updatedAt: string;
+  paints?: Paint[];
 }

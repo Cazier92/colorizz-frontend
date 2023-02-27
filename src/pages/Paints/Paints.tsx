@@ -11,6 +11,7 @@ import { User } from '../../types/models'
 
 // components
 import AddPaint from '../../components/AddPaint/AddPaint'
+import UpdatePaint from '../../components/UpdatePaint/UpdatePaint'
 
 interface PaintsProps {
   user: User | null;
@@ -19,6 +20,7 @@ interface PaintsProps {
 const Paints = (props: PaintsProps): JSX.Element => {
   const {user} = props
   const [paints, setPaints] = useState<Paint[]>([])
+  // const [showUpdate, setShowUpdate] = useState<boolean[]>([])
 
 
   useEffect((): void => {
@@ -33,11 +35,19 @@ const Paints = (props: PaintsProps): JSX.Element => {
     fetchPaints()
   }, [])
 
+  // useEffect((): void => {
+  //   if (paints.length) {
+  //     for (let i = 0; i < paints.length; i++)
+  //     setShowUpdate([...showUpdate, false])
+  //   }
+  //   console.log(showUpdate)
+  // }, [paints])
+
   const handleAddPaint = async(formData: PaintFormData): Promise<void> => {
     try {
       if (user !== null) {
         // formData.profileId = user.profile.id
-        console.log(formData)
+        // console.log(formData)
         const newPaint: Paint = {
           name: formData.name,
           color: formData.color,
@@ -51,13 +61,40 @@ const Paints = (props: PaintsProps): JSX.Element => {
         }
         paintService.addPaint(formData)
         setPaints([...paints, newPaint])
-
       }
 
     } catch (error) {
       console.log(error);
     }
   }
+
+
+
+  const handleUpdatePaint = async(formData: PaintFormData, paint: Paint): Promise<void> => {
+    try {
+      if (user !== null && paint.id !== undefined) {
+        const updatedPaint: Paint = {
+          id: paint.id,
+          name: formData.name,
+          color: formData.color,
+          pigment_code: formData.pigment_code,
+          pigment_number: formData.pigment_number,
+          transparency: formData.transparency,
+          staining: formData.staining,
+          granulation: formData.granulation,
+          brand: formData.brand,
+          profileId: formData.profileId
+        }
+        paintService.updatePaint(formData, paint)
+        setPaints([...paints, updatedPaint])
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  console.log(paints.length)
+  // console.log(showUpdate)
 
   return (
     <>
@@ -80,9 +117,9 @@ const Paints = (props: PaintsProps): JSX.Element => {
         <h2>Transparency: {paint.transparency}</h2>
         <h2>Granulation: {paint.granulation}</h2>
         <h2>Staining: {paint.staining}</h2>
-        {paint.profileId === user?.profile.id ?  (
+        {paint.profileId === user?.profile.id && paint.id ?  (
       <>
-        <button>Update Paint</button>
+        <UpdatePaint handleUpdatePaint={handleUpdatePaint} user={user} paint={paint}/>
       </>
       )
     :
