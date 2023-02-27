@@ -8,17 +8,20 @@ import * as paintService from '../../services/paintService'
 import { Paint } from '../../types/models'
 import { PaintFormData } from '../../types/forms'
 import { User } from '../../types/models'
+import { Palette } from '../../types/models'
 
 // components
 import AddPaint from '../../components/AddPaint/AddPaint'
 import UpdatePaint from '../../components/UpdatePaint/UpdatePaint'
+import AddToPalette from '../../components/AddToPalette/AddToPalette'
 
 interface PaintsProps {
   user: User | null;
+  palettes: Palette[];
 }
 
 const Paints = (props: PaintsProps): JSX.Element => {
-  const {user} = props
+  const {user, palettes} = props
   const [paints, setPaints] = useState<Paint[]>([])
   // const [showUpdate, setShowUpdate] = useState<boolean[]>([])
 
@@ -128,6 +131,10 @@ const Paints = (props: PaintsProps): JSX.Element => {
         </>
       )
     }
+      {user ? (
+      <>
+        <AddToPalette palettes={palettes} paint={paint} user={user}/>
+      </>) : (<> </>)}
       </>
     )}
     </>

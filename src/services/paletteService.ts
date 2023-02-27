@@ -39,7 +39,43 @@ async function createPalette(formData: PaletteFormData): Promise<Palette> {
   }
 }
 
+async function associatePaint(palette: Palette, paint: Paint): Promise<Palette> {
+  try {
+    const paletteId = palette.id
+    const paintId = paint.id
+    const res = await fetch(`${BASE_URL}/${paletteId}/paints/${paintId}`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        "Content-Type": "application/json",
+      },
+    })
+    return await res.json() as Palette
+  } catch (error) {
+    throw error
+  }
+}
+
+async function removePaint(palette: Palette, paint: Paint): Promise<Palette> {
+  try {
+    const paletteId = palette.id
+    const paintId = paint.id
+    const res = await fetch(`${BASE_URL}/${paletteId}/paints/${paintId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        "Content-Type": "application/json",
+      },
+    })
+    return await res.json() as Palette
+  } catch (error) {
+    throw error
+  }
+}
+
 export {
   getAllPalettes,
   createPalette,
+  associatePaint,
+  removePaint,
 }

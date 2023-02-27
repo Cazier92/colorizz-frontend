@@ -1,5 +1,5 @@
 // npm modules 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // page components
@@ -17,17 +17,35 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as paletteService from './services/paletteService'
 
 // stylesheets
 import './App.css'
 
 // types
 import { User } from './types/models'
+import { Palette } from './types/models'
 
 function App(): JSX.Element {
   const navigate = useNavigate()
   
   const [user, setUser] = useState<User | null>(authService.getUser())
+
+  const [palettes, setPalettes] = useState<Palette[]>([])
+
+
+  useEffect((): void => {
+    const fetchPalettes = async (): Promise<void> => {
+      try {
+        const palettesData: Palette[] = await paletteService.getAllPalettes()
+        setPalettes(palettesData.filter((palette) => palette.profileId === user?.profile.id))
+        // setPalettes(palettesData)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchPalettes()
+  }, [])
 
   const handleLogout = (): void => {
     authService.logout()
@@ -74,14 +92,14 @@ function App(): JSX.Element {
         <Route 
           path="/paints"
           element={
-            <Paints user={user}/>
+            <Paints user={user} palettes={palettes}/>
           }
         />
         <Route 
           path="/palettes"
           element={
             <ProtectedRoute user={user}>
-              <Palettes user={user} />
+              <Palettes user={user} palettes={palettes}/>
             </ProtectedRoute>
           }
         />

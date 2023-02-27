@@ -14,26 +14,27 @@ import CreatePalette from '../../components/CreatePalette/CreatePalette'
 
 interface PalettesProps {
   user: User | null;
+  palettes: Palette[];
 }
 
 const Palettes = (props: PalettesProps): JSX.Element => {
-  const {user} = props
-  const [palettes, setPalettes] = useState<Palette[]>([])
+  const {user, palettes} = props
+  // const [palettes, setPalettes] = useState<Palette[]>([])
   // const [showUpdate, setShowUpdate] = useState<boolean[]>([])
 
 
-  useEffect((): void => {
-    const fetchPalettes = async (): Promise<void> => {
-      try {
-        const palettesData: Palette[] = await paletteService.getAllPalettes()
-        setPalettes(palettesData.filter((palette) => palette.profileId === user?.profile.id))
-        // setPalettes(palettesData)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    fetchPalettes()
-  }, [])
+  // useEffect((): void => {
+  //   const fetchPalettes = async (): Promise<void> => {
+  //     try {
+  //       const palettesData: Palette[] = await paletteService.getAllPalettes()
+  //       setPalettes(palettesData.filter((palette) => palette.profileId === user?.profile.id))
+  //       // setPalettes(palettesData)
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  //   }
+  //   fetchPalettes()
+  // }, [])
 
   const handleCreatePalette = async(formData: PaletteFormData): Promise<void> => {
     try {
