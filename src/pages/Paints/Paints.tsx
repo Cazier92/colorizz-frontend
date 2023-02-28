@@ -14,6 +14,9 @@ import { Palette } from '../../types/models'
 import AddPaint from '../../components/AddPaint/AddPaint'
 import UpdatePaint from '../../components/UpdatePaint/UpdatePaint'
 import AddToPalette from '../../components/AddToPalette/AddToPalette'
+import PaintCard from './PaintCard'
+
+import './Paints.css'
 
 interface PaintsProps {
   user: User | null;
@@ -104,42 +107,24 @@ const Paints = (props: PaintsProps): JSX.Element => {
 
   return (
     <>
-    {user ?  (
-      <>
-        <AddPaint handleAddPaint={handleAddPaint} user={user}/>
-      </>
-      )
-    :
-      (
-        <>
-        </>
-      )
-    }
-    {paints.map((paint) => 
-      <>
-        <h1>{paint.name}</h1>
-        <h2>{paint.color}</h2>
-        <h2>{paint.pigment_code} {paint.pigment_number}</h2>
-        <h2>Transparency: {paint.transparency}</h2>
-        <h2>Granulation: {paint.granulation}</h2>
-        <h2>Staining: {paint.staining}</h2>
-        {paint.profileId === user?.profile.id && paint.id ?  (
-      <>
-        <UpdatePaint handleUpdatePaint={handleUpdatePaint} user={user} paint={paint} key={paint.id}/>
-      </>
-      )
-    :
-      (
-        <>
-        </>
-      )
-    }
-      {user ? (
-      <>
-        <AddToPalette palettes={palettes} paint={paint} user={user} setPalettes={setPalettes} setPaintAssociated={setPaintAssociated} paintAssociated={paintAssociated} key={paint.name}/>
-      </>) : (<> </>)}
-      </>
-    )}
+    <main>
+      {user ?  (
+        <div className='add-paint-div'>
+          <AddPaint handleAddPaint={handleAddPaint} user={user} key={"addPaint"}/>
+        </div>
+        )
+      :
+        (
+          <>
+          </>
+        )
+      }
+      {paints.map((paint) => 
+        <div className='paint-card-div'>
+          <PaintCard key={paint.id} paint={paint} handleUpdatePaint={handleUpdatePaint} user={user} palettes={palettes} setPalettes={setPalettes} setPaintAssociated={setPaintAssociated} paintAssociated={paintAssociated}/>
+        </div>
+      )}
+    </main>
     </>
   )
 }

@@ -9,10 +9,11 @@ interface AddPaintProps {
   user: User
 }
 
-
+import './AddPaint.css'
 
 const AddPaint = (props: AddPaintProps): JSX.Element => {
   const {handleAddPaint, user} = props
+  const [showAdd, setShowAdd] = useState<boolean>(false)
 
   const [form, setForm] = useState<PaintFormData>({
     name: '',
@@ -43,9 +44,16 @@ const AddPaint = (props: AddPaintProps): JSX.Element => {
     }
   }
 
+  const handleClick = (): void => {
+    setShowAdd(!showAdd)
+  }
+
   return (
     <>
+    {showAdd ? (<>
+    <div className="add-paint-card">
       <h3>Add a Paint:</h3>
+      <button onClick={handleClick} className='hide-button'>Hide</button>
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder="Paint Name" name="name" required value={form.name} onChange={handleChange}/>
         <select required name="color" id="color-select" value={form.color} onChange={handleChange}>
@@ -101,8 +109,15 @@ const AddPaint = (props: AddPaintProps): JSX.Element => {
           <option value="3">3</option>
           <option value="4">4</option>
         </select>
-        <button type="submit">SUBMIT</button>
+        <button type="submit" className="submit-button">SUBMIT</button>
       </form>
+    </div>
+    
+    </>) : (<>
+      <div className="button-div">
+        <button onClick={handleClick}>Add Paint</button>
+      </div>
+    </>)}
     </>
   )
 }

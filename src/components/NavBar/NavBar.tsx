@@ -9,6 +9,8 @@ interface NavBarProps {
   handleLogout: () => void;
 }
 
+import './NavBar.css'
+
 const NavBar = (props: NavBarProps): JSX.Element => {
   const { user, handleLogout } = props
   
@@ -27,6 +29,7 @@ const NavBar = (props: NavBarProps): JSX.Element => {
         <ul>
           <li><NavLink to="/login">Log In</NavLink></li>
           <li><NavLink to="/signup">Sign Up</NavLink></li>
+          <li><NavLink to="/paints">Paints</NavLink></li>
         </ul>
       }
     </nav>

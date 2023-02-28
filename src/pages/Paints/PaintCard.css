@@ -1,0 +1,8 @@
+.paint-card {
+  background-color: #FCEFF9;
+  padding: 3vmin;
+  margin: 3vmin 0;
+  box-sizing: border-box;
+  border-radius: 0.5em;
+  box-shadow: #1BE7FFCF 0px 0px 10px;
+}
