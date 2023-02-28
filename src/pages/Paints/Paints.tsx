@@ -70,8 +70,8 @@ const Paints = (props: PaintsProps): JSX.Element => {
         }
         await paintService.addPaint(formData)
         setPaints([...paints, newPaint])
+        setPaintAssociated(true)
       }
-
     } catch (error) {
       console.log(error);
     }

@@ -1,0 +1,14 @@
+button {
+  background-color: rgba(0, 0, 0, 0);
+  color: #CF1259;
+  border: #CF1259 2px solid;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: #E40066 0px 0px 5px;
+}
+
+button:hover {
+  background-color: #E40066D0;
+  color: white;
+  box-shadow: #9B7EDEFF 0px 0px 10px;
+}

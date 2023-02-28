@@ -1,0 +1,16 @@
+
+.remove-paint-div {
+  display: flex;
+  width: 100%;
+  margin: 1vmin 0;
+  text-align: left;
+}
+
+.paint-label {
+  width: 70%;
+  margin-left: 8vmin;
+}
+
+#remove-btn {
+  max-height: 7vmin;
+}

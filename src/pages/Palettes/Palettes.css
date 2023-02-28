@@ -1,0 +1,20 @@
+.palette-card {
+  background-color: white;
+  width: 80%;
+  margin: 3vmin;
+  padding-bottom: 2vmin;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: space-around;
+}
+
+.palette-name {
+  align-self: center;
+}
+
+.palette-paint {
+  margin-left: 2vmin;
+  width: 100%;
+}

@@ -39,17 +39,8 @@ const AddToPalette = (props: AddToPaletteProps): JSX.Element => {
 
   const handleAssociatePaint = async(palette: Palette, paint: Paint): Promise<void> => {
     try {
-      paletteService.associatePaint(palette, paint)
-      // const fetchPalettes = async (): Promise<void> => {
-      //   try {
-      //     const palettesData: Palette[] = await paletteService.getAllPalettes()
-      //     setPalettes(palettesData.filter((palette) => palette.profileId === user?.profile.id))
-      //     // setPalettes(palettesData)
-      //   } catch (error) {
-      //     console.log(error)
-      //   }
-      // }
-      // fetchPalettes()
+      await paletteService.associatePaint(palette, paint)
+      setPaintAssociated(true)
     } catch (err) {
       console.log(err)
     }

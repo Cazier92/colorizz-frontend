@@ -25,6 +25,7 @@ import './App.css'
 // types
 import { User } from './types/models'
 import { Palette } from './types/models'
+import { PaletteFormData } from './types/forms'
 
 function App(): JSX.Element {
   const navigate = useNavigate()
@@ -33,6 +34,7 @@ function App(): JSX.Element {
 
   const [palettes, setPalettes] = useState<Palette[]>([])
   const [paintAssociated, setPaintAssociated] = useState<boolean>(false)
+  // const [newPalette, setNewPalette] = useState<boolean>(false)
 
 
   useEffect((): void => {
@@ -50,7 +52,7 @@ function App(): JSX.Element {
       fetchPalettes()
       setPaintAssociated(false)
     }
-  }, [])
+  }, [paintAssociated])
 
   const handleLogout = (): void => {
     authService.logout()
@@ -62,7 +64,17 @@ function App(): JSX.Element {
     setUser(authService.getUser())
   }
 
-  console.log(paintAssociated)
+  const handleCreatePalette = async(formData: PaletteFormData): Promise<void> => {
+    try {
+      if (user !== null)
+      await paletteService.createPalette(formData)
+      setPaintAssociated(true)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // console.log(paintAssociated)
 
   return (
     <>
@@ -104,7 +116,7 @@ function App(): JSX.Element {
           path="/palettes"
           element={
             <ProtectedRoute user={user}>
-              <Palettes user={user} palettes={palettes} paintAssociated={paintAssociated} setPaintAssociated={setPaintAssociated}/>
+              <Palettes user={user} palettes={palettes} paintAssociated={paintAssociated} setPaintAssociated={setPaintAssociated} handleCreatePalette={handleCreatePalette}/>
             </ProtectedRoute>
           }
         />

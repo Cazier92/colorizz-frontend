@@ -13,15 +13,18 @@ import { PaletteFormData } from '../../types/forms'
 import CreatePalette from '../../components/CreatePalette/CreatePalette'
 import RemovePaintBtn from './RemovePaintBtn'
 
+import './Palettes.css'
+
 interface PalettesProps {
   user: User | null;
   palettes: Palette[];
   setPaintAssociated: React.Dispatch<React.SetStateAction<boolean>>;
   paintAssociated: boolean;
+  handleCreatePalette: (formData: PaletteFormData) => void;
 }
 
 const Palettes = (props: PalettesProps): JSX.Element => {
-  const {user, palettes, setPaintAssociated, paintAssociated} = props
+  const {user, palettes, setPaintAssociated, paintAssociated, handleCreatePalette} = props
   // const [palettes, setPalettes] = useState<Palette[]>([])
   // const [showUpdate, setShowUpdate] = useState<boolean[]>([])
 
@@ -39,19 +42,12 @@ const Palettes = (props: PalettesProps): JSX.Element => {
   //   fetchPalettes()
   // }, [])
 
-  const handleCreatePalette = async(formData: PaletteFormData): Promise<void> => {
-    try {
-      if (user !== null)
-      await paletteService.createPalette(formData)
-      setPaintAssociated(!paintAssociated)
-    } catch (error) {
-      console.log(error);
-    }
-  }
+
 
   const handleRemovePaint = async(palette: Palette, paint: Paint): Promise<void> => {
     try {
       await paletteService.removePaint(palette, paint)
+      setPaintAssociated(true)
     } catch (error) {
       console.log(error);
     }
@@ -59,38 +55,38 @@ const Palettes = (props: PalettesProps): JSX.Element => {
   console.log(palettes[1])
 
   return (
-    <>
+    <main>
     {user
     ? 
     (
-    <div>
+    <div className='create-palette-div'>
       <CreatePalette user={user} handleCreatePalette={handleCreatePalette}/>
     </div>
     ) 
     : 
     (<> </>)}
     {palettes.map((palette) => 
-      <>
+      <div className='palette-card'>
         {palette.name ? (
-          <h1>{palette.name}</h1>
+          <h1 className='palette-name'>{palette.name}</h1>
         )
         :
         (
-          <h1>Palette {palette.id}</h1>
+          <h1 className='palette-name'>Palette {palette.id}</h1>
         )
         }
         {palette.paints?.map((paint) => 
           <>
           
-          <div>
+          <div className='palette-paint'>
             {/* <h1>{paint.name}</h1> */}
             <RemovePaintBtn palette={palette} paint={paint} handleRemovePaint={handleRemovePaint}/>
           </div>
           </>
         )}
-      </>
+      </div>
     )}
-    </>
+    </main>
   )
 }
 

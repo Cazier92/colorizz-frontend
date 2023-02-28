@@ -2,6 +2,8 @@
 import { Palette } from "../../types/models"
 import { Paint } from "../../types/models"
 
+import './RemovePaintBtn.css'
+
 interface RemovePaintBtnProps {
   palette: Palette;
   paint: Paint;
@@ -21,11 +23,10 @@ const RemovePaintBtn = (props: RemovePaintBtnProps): JSX.Element => {
   }
 
   return (
-    <>
-    
-    <label htmlFor="remove-btn">{paint.name}</label>
-    <button id="remove-btn" onClick={handleClick}>X</button>
-    </>
+    <div className="remove-paint-div">
+      <label htmlFor="remove-btn" className="paint-label">{paint.name}</label>
+      <button id="remove-btn" onClick={handleClick}>X</button>
+    </div>
   )
 }
 
