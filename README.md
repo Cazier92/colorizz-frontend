@@ -34,3 +34,5 @@ Colorizz is a simple app catering to the watercolor community, which lets you ke
 ## Credit
 
 Logo from [Softicons](https://www.softicons.com/web-icons/flat-style-icons-by-flaticonmaker/palette-icon)
+
+Idea for background from [Bábara Rodríguez](https://codepen.io/baarbaracrr/pen/KKovmGb)
