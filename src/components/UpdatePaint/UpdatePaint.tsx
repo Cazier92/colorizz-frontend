@@ -69,7 +69,7 @@ const UpdatePaint = (props: UpdatePaintProps): JSX.Element => {
             <option value="Violet">Violet</option>
             <option value="Magenta">Magenta</option>
             <option value="Earth">Earth</option>
-            <option value="Black">Black</option>
+            <option value="Black">Black/Grey</option>
             <option value="White">White</option>
             <option value="Metallic/Other">Metallic/Other</option>
           </select>
