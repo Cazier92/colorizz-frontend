@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import { Palette } from "../../types/models";
 import { PaletteFormData } from "../../types/forms";
 import { User } from "../../types/models";
 
@@ -21,9 +20,7 @@ const CreatePalette = (props: CreatePaletteProps): JSX.Element => {
   })
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
-    // console.log(evt.target.value)
     setForm({ ...form, [evt.target.name]: evt.target.value });
-    
   };
 
   const handleSubmit = async(evt: React.FormEvent<HTMLFormElement>): Promise<void> => {

@@ -1,20 +1,17 @@
 nav {
   background-color: #1BE7FF9F;
-  height: 5vh;
+  height: 7vh;
   margin: 0;
-  padding: 1vmin;
-  /* padding-bottom: 1vmin; */
 }
 
 ul {
   display: flex;
   justify-content: space-around;
   margin: 0;
-  /* margin-top: 1vmin; */
-  /* margin-bottom: 1vmin; */
   padding-top: 1vh;
+  padding-left: 0;
   color: black;
-  /* align-items: center; */
+  align-items: center;
 }
 
 li {
@@ -43,6 +40,16 @@ li {
   border-radius: 50%;
 }
 
+.avatar {
+  border-radius: 50%;
+  max-width: 5vmin;
+  min-width: 5vmin;
+  max-height: 5vmin;
+  min-height: 5vmin;
+  object-fit: cover;
+  align-self: center;
+}
+
 @media screen and (max-width: 620px){
   nav {
     height: 6vh;
@@ -50,7 +57,6 @@ li {
   ul {
     justify-content: space-between;
     text-align: center;
-    /* margin-left: 0; */
     padding: 0;
     margin-top: 1vmin;
     align-items: center;

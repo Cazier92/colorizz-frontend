@@ -23,13 +23,12 @@
 
 .palettes-main {
   height: 100vh;
-  /* background-color: #454851FF; */
+
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   overflow: auto;
-  /* background: linear-gradient(315deg, #FF5714AF 3%, #FEB800AF 38%, #E4FF1AFF 20%, #1BE7FFAF 68%, #E4FF1AAF 98%); */
   background: linear-gradient(315deg, #C2CFB2 3%, #6320EE 38%, #231F20 68%, #8075FF 98%);
   animation: gradient 15s ease infinite;
   background-size: 400% 400%;

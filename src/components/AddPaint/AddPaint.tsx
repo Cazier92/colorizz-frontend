@@ -29,7 +29,6 @@ const AddPaint = (props: AddPaintProps): JSX.Element => {
   })
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
-    // console.log(evt.target.value)
     setForm({ ...form, [evt.target.name]: evt.target.value });
     console.log(form)
   };
@@ -39,13 +38,13 @@ const AddPaint = (props: AddPaintProps): JSX.Element => {
     console.log(form)
     try {
       handleAddPaint(form)
-      // setForm({
-      //   name: '',
-      //   color: '',
-      //   pigment_number: 0,
-      //   brand: undefined,
-      //   profileId: user.profile.id,
-      // })
+      setForm({
+        name: '',
+        color: '',
+        pigment_number: 0,
+        brand: '',
+        profileId: user.profile.id,
+      })
       setShowAdd(false)
       setPaintAssociated(true)
     } catch (err) {

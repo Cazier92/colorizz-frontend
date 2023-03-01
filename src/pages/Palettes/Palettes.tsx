@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 
 // services
 import * as paletteService from '../../services/paletteService'
@@ -25,23 +24,6 @@ interface PalettesProps {
 
 const Palettes = (props: PalettesProps): JSX.Element => {
   const {user, palettes, setPaintAssociated, paintAssociated, handleCreatePalette} = props
-  // const [palettes, setPalettes] = useState<Palette[]>([])
-  // const [showUpdate, setShowUpdate] = useState<boolean[]>([])
-
-
-  // useEffect((): void => {
-  //   const fetchPalettes = async (): Promise<void> => {
-  //     try {
-  //       const palettesData: Palette[] = await paletteService.getAllPalettes()
-  //       setPalettes(palettesData.filter((palette) => palette.profileId === user?.profile.id))
-  //       // setPalettes(palettesData)
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   }
-  //   fetchPalettes()
-  // }, [])
-
 
 
   const handleRemovePaint = async(palette: Palette, paint: Paint): Promise<void> => {
@@ -56,11 +38,6 @@ const Palettes = (props: PalettesProps): JSX.Element => {
 
   return (
     <main className='palettes-main'>
-      <div>
-        <div className="wave"></div>
-        <div className="wave"></div>
-        <div className="wave"></div>
-      </div>
       {user
       ? 
       (
@@ -85,7 +62,6 @@ const Palettes = (props: PalettesProps): JSX.Element => {
               <>
               
               <div className='palette-paint'>
-                {/* <h1>{paint.name}</h1> */}
                 <RemovePaintBtn palette={palette} paint={paint} handleRemovePaint={handleRemovePaint}/>
               </div>
               </>

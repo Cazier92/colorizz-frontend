@@ -18,23 +18,14 @@ interface AddToPaletteProps {
 }
 
 const AddToPalette = (props: AddToPaletteProps): JSX.Element => {
-  const {paint, palettes, user, setPalettes, setPaintAssociated, paintAssociated} = props
+  const {paint, palettes, setPaintAssociated, paintAssociated} = props
   const [showPalettes, setShowPalettes] = useState<boolean>(false)
-  // const [form, setForm] = useState<number[]>([])
 
   const handleShowPalettesButton = (): void => {
     setShowPalettes(!showPalettes)
   }
 
-  // const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-  //   // console.log(evt.target.value)
-  //   console.log(evt.target.value)
-  //   let newVal = parseInt(evt.target.value)
-  //   form.push(newVal)
-  //   console.log('FORM:', form)
-  // };
 
-  // console.log('FORM:', form)
 
 
   const handleAssociatePaint = async(palette: Palette, paint: Paint): Promise<void> => {
@@ -50,15 +41,6 @@ const AddToPalette = (props: AddToPaletteProps): JSX.Element => {
     <>
     {showPalettes ? (<>
       <button onClick={handleShowPalettesButton}>Close</button>
-      {/* <form>
-        {palettes.map((palette) =>
-        <>
-          <label htmlFor="palette-checkbox">{palette.name}</label>
-          <input type="checkbox" name={palette.name} value={palette.id} id="palette-checkbox" onChange={handleChange}/>
-        </>
-        )}
-        <button type="submit">Add</button>
-      </form> */}
       {palettes.map((palette) => 
         <div>
           <AddToPalBtn palette={palette} paint={paint} handleAssociatePaint={handleAssociatePaint} setPaintAssociated={setPaintAssociated} paintAssociated={paintAssociated} key={palette.id} setShowPalettes={setShowPalettes}/>

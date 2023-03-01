@@ -16,7 +16,7 @@ interface UpdatePaintProps {
 
 
 const UpdatePaint = (props: UpdatePaintProps): JSX.Element => {
-  const {handleUpdatePaint, user, paint, setPaintAssociated} = props
+  const {handleUpdatePaint, paint, setPaintAssociated} = props
   const [showUpdate, setShowUpdate] = useState<boolean>(false)
 
   const [form, setForm] = useState<PaintFormData>({
@@ -32,14 +32,11 @@ const UpdatePaint = (props: UpdatePaintProps): JSX.Element => {
   })
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
-    // console.log(evt.target.value)
     setForm({ ...form, [evt.target.name]: evt.target.value });
-    // console.log(form)
   };
 
   const handleSubmit = async(evt: React.FormEvent<HTMLFormElement>): Promise<void> => {
     evt.preventDefault()
-    // console.log(form)
     try {
       handleUpdatePaint(form, paint)
       setPaintAssociated(true)
@@ -64,7 +61,6 @@ const UpdatePaint = (props: UpdatePaintProps): JSX.Element => {
         <form onSubmit={handleSubmit} className='update-paint-form'>
           <input type="text" name="name" required value={form.name} onChange={handleChange} />
           <select required name="color" id="color-select" value={form.color} onChange={handleChange}>
-            {/* <option value={form.color}>{form.color}</option> */}
             <option value="Red">Red</option>
             <option value="Orange">Orange</option>
             <option value="Yellow">Yellow</option>
@@ -79,7 +75,6 @@ const UpdatePaint = (props: UpdatePaintProps): JSX.Element => {
           </select>
           <label htmlFor="pigment_code-select">Pigment Code:</label>
           <select name="pigment_code" id="pigment_code-select" value={form.pigment_code} onChange={handleChange}>
-            {/* <option value={form.pigment_code}>{form.pigment_code}</option> */}
             <option value="PR">PR</option>
             <option value="PO">PO</option>
             <option value="PY">PY</option>

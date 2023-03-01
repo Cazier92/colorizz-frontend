@@ -12,8 +12,6 @@ import { Palette } from '../../types/models'
 
 // components
 import AddPaint from '../../components/AddPaint/AddPaint'
-import UpdatePaint from '../../components/UpdatePaint/UpdatePaint'
-import AddToPalette from '../../components/AddToPalette/AddToPalette'
 import PaintCard from './PaintCard'
 
 import './Paints.css'
@@ -29,7 +27,7 @@ interface PaintsProps {
 const Paints = (props: PaintsProps): JSX.Element => {
   const {user, palettes, setPalettes, setPaintAssociated, paintAssociated} = props
   const [paints, setPaints] = useState<Paint[]>([])
-  // const [showUpdate, setShowUpdate] = useState<boolean[]>([])
+
 
 
   useEffect((): void => {
@@ -48,19 +46,12 @@ const Paints = (props: PaintsProps): JSX.Element => {
     }
   }, [paintAssociated])
 
-  // useEffect((): void => {
-  //   if (paints.length) {
-  //     for (let i = 0; i < paints.length; i++)
-  //     setShowUpdate([...showUpdate, false])
-  //   }
-  //   console.log(showUpdate)
-  // }, [paints])
+
 
   const handleAddPaint = async(formData: PaintFormData): Promise<void> => {
     try {
       if (user !== null) {
-        // formData.profileId = user.profile.id
-        // console.log(formData)
+
         const newPaint: Paint = {
           name: formData.name,
           color: formData.color,
@@ -106,8 +97,6 @@ const Paints = (props: PaintsProps): JSX.Element => {
     }
   }
 
-  console.log(paints.length)
-  // console.log(showUpdate)
 
   return (
     <>

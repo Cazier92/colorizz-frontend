@@ -6,7 +6,6 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
-import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Paints from './pages/Paints/Paints'
 import Palettes from './pages/Palettes/Palettes'
@@ -18,6 +17,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 // services
 import * as authService from './services/authService'
 import * as paletteService from './services/paletteService'
+import * as profileService from './services/profileService'
 
 // stylesheets
 import './App.css'
@@ -26,6 +26,7 @@ import './App.css'
 import { User } from './types/models'
 import { Palette } from './types/models'
 import { PaletteFormData } from './types/forms'
+import { Profile } from './types/models'
 
 function App(): JSX.Element {
   const navigate = useNavigate()
@@ -34,7 +35,8 @@ function App(): JSX.Element {
 
   const [palettes, setPalettes] = useState<Palette[]>([])
   const [paintAssociated, setPaintAssociated] = useState<boolean>(false)
-  // const [newPalette, setNewPalette] = useState<boolean>(false)
+  const [profiles, setProfiles] = useState<Profile[]>([])
+  const [userProfile, setUserProfile] = useState<Profile>()
 
 
   useEffect((): void => {
@@ -42,7 +44,6 @@ function App(): JSX.Element {
       try {
         const palettesData: Palette[] = await paletteService.getAllPalettes()
         setPalettes(palettesData.filter((palette) => palette.profileId === user?.profile.id))
-        // setPalettes(palettesData)
       } catch (error) {
         console.log(error)
       }
@@ -53,6 +54,28 @@ function App(): JSX.Element {
       setPaintAssociated(false)
     }
   }, [paintAssociated])
+
+  useEffect((): void => {
+    const fetchProfiles = async (): Promise<void> => {
+      try {
+        const profileData: Profile[] = await profileService.getAllProfiles()
+        setProfiles(profileData)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchProfiles()
+  }, [])
+
+  useEffect((): void => {
+    const findUserProfile = (profiles: Profile[]): void => {
+      if (user !== null) {
+        setUserProfile(profiles.find(profile => profile.userId === user.profile.id))
+      }
+    }
+    findUserProfile(profiles)
+  }, [profiles])
+
 
   const handleLogout = (): void => {
     authService.logout()
@@ -74,11 +97,10 @@ function App(): JSX.Element {
     }
   }
 
-  // console.log(paintAssociated)
 
   return (
     <>
-      <NavBar user={user} handleLogout={handleLogout} />
+      <NavBar user={user} handleLogout={handleLogout} userProfile={userProfile}/>
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
         <Route
@@ -88,14 +110,6 @@ function App(): JSX.Element {
         <Route
           path="/login"
           element={<Login handleAuthEvt={handleAuthEvt} />}
-        />
-        <Route
-          path="/profiles"
-          element={
-            <ProtectedRoute user={user}>
-              <Profiles />
-            </ProtectedRoute>
-          }
         />
         <Route
           path="/change-password"
