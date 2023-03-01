@@ -36,7 +36,7 @@ const decideBoxColor = (paint: Paint): string => {
     return '#1BE7FF 0px 0px 15px'
   }
   if (paint.color === 'Violet') {
-    return '#CB7EFE 0px 0px 25px'
+    return '#BB7EFE 0px 0px 25px'
   }
   if (paint.color === 'Magenta') {
     return '#E40066 0px 0px 15px'
@@ -75,7 +75,7 @@ const decideBorderColor = (paint: Paint): string => {
     return '#1BE7FF 3px solid'
   }
   if (paint.color === 'Violet') {
-    return '#9B7EDE 4px solid'
+    return '#BB7EFE 3px solid'
   }
   if (paint.color === 'Magenta') {
     return '#E40066 3px solid'
