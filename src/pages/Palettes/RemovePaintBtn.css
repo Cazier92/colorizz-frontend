@@ -1,14 +1,21 @@
 
 .remove-paint-div {
   display: flex;
-  width: 100%;
+  width: 90%;
   margin: 1vmin 0;
   text-align: left;
+  /* background-color: red; */
+  padding: 1vmin;
+  border-radius: 5px;
+}
+
+.remove-paint-div:hover {
+  background-color: rgba(100, 100, 100, .5);
 }
 
 .paint-label {
-  width: 70%;
-  margin-left: 8vmin;
+  width: 95%;
+  margin-left: 0vmin;
 }
 
 #remove-btn {

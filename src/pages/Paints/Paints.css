@@ -1,9 +1,12 @@
-main {
+.paint-main {
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
   background-color: #454851;
+  min-height: 100vh;
+  padding-bottom: 20vmin;
+  padding-top: 5vmin;
 }
 
 .paint-card-div {

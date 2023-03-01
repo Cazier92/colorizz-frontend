@@ -107,7 +107,7 @@ const Paints = (props: PaintsProps): JSX.Element => {
 
   return (
     <>
-    <main>
+    <main className='paint-main'>
       {user ?  (
         <div className='add-paint-div'>
           <AddPaint handleAddPaint={handleAddPaint} user={user} key={"addPaint"}/>

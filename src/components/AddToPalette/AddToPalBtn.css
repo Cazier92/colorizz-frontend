@@ -1,0 +1,9 @@
+.add-to-palette-btn-div {
+  margin: 2vmin;
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  background-color: rgba(100, 100, 100, .5);
+  padding: 1vmin;
+  border-radius: 5px;
+}

@@ -3,6 +3,8 @@
 import { Palette } from "../../types/models"
 import { Paint } from "../../types/models";
 
+import './AddToPalBtn.css'
+
 interface AddToPalBtnProps {
   palette: Palette;
   paint: Paint;
@@ -25,10 +27,10 @@ const AddToPalBtn = (props: AddToPalBtnProps): JSX.Element => {
   }
 
   return (
-    <>
-    <label htmlFor="palette-button">{palette.name}</label>
-    <button id="palette-button" onClick={handleClick}>Add</button>
-    </>
+    <div className="add-to-palette-btn-div">
+      <label htmlFor="palette-button">{palette.name}</label>
+      <button id="palette-button" onClick={handleClick}>Add</button>
+    </div>
   )
 }
 

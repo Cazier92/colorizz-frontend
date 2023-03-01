@@ -55,7 +55,7 @@ const Palettes = (props: PalettesProps): JSX.Element => {
   console.log(palettes[1])
 
   return (
-    <main>
+    <main className='palettes-main'>
     {user
     ? 
     (

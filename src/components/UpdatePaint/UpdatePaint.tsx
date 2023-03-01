@@ -4,6 +4,8 @@ import { Paint } from "../../types/models";
 import { PaintFormData } from "../../types/forms";
 import { User } from "../../types/models";
 
+import './UpdatePaint.css'
+
 interface UpdatePaintProps {
   handleUpdatePaint: (formData: PaintFormData, paint: Paint) => void;
   user: User
@@ -48,17 +50,17 @@ const UpdatePaint = (props: UpdatePaintProps): JSX.Element => {
   const handleUpdateButton = (): void => {
     setShowUpdate(!showUpdate)
   }
-  
+
   if (showUpdate === false) {
     return (
       <button onClick={handleUpdateButton}>Update Paint</button>
     )
   } else {
     return (
-      <>
+      <div className="update-paint-div">
         <h3>Update Paint:</h3>
         <button onClick={handleUpdateButton}>Discard Changes</button>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='update-paint-form'>
           <input type="text" name="name" required value={form.name} onChange={handleChange} />
           <select required name="color" id="color-select" value={form.color} onChange={handleChange}>
             {/* <option value={form.color}>{form.color}</option> */}
@@ -117,7 +119,7 @@ const UpdatePaint = (props: UpdatePaintProps): JSX.Element => {
           </select>
           <button type="submit">SUBMIT</button>
         </form>
-      </>
+      </div>
     )
   }
 }

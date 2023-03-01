@@ -4,6 +4,8 @@ import { Palette } from "../../types/models";
 import { PaletteFormData } from "../../types/forms";
 import { User } from "../../types/models";
 
+import './CreatePalette.css'
+
 interface CreatePaletteProps {
   handleCreatePalette: (formData: PaletteFormData) => void;
   user: User;
@@ -38,13 +40,13 @@ const CreatePalette = (props: CreatePaletteProps): JSX.Element => {
   }
 
   return (
-    <>
-    <h5>Create New Palette:</h5>
-    <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="Palette Name" name="name" required value={form.name} onChange={handleChange}/>
-      <button type="submit">Create</button>
-    </form>
-    </>
+    <div className="new-palette-div">
+      <h5>Create New Palette:</h5>
+      <form onSubmit={handleSubmit} className='new-palette-form'>
+        <input type="text" placeholder="Palette Name" name="name" required value={form.name} onChange={handleChange}/>
+        <button type="submit">Create</button>
+      </form>
+    </div>
   )
 }
 
