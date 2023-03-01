@@ -128,6 +128,45 @@ const romanNumeral = (x: number | undefined) => {
   }
 }
 
+const colorSwatch = (paint: Paint): string => {
+  if (paint.color === 'Red') {
+    return 'linear-gradient(315deg, #F6511D 3%, #A3333D 38%, #D10000 68%, #F64740 98%)'
+  }
+  if (paint.color === 'Orange') {
+    return 'linear-gradient(315deg, #DE8F6E 3%, #F45D01 38%, #E24E1B 68%, #DB995A 98%)'
+  }
+  if (paint.color === 'Yellow') {
+    return 'linear-gradient(315deg, #FFEE88 3%, #C2E812 38%, #CEC075 68%, #B39C4D 98%)'
+  }
+  if (paint.color === 'Green') {
+    return 'linear-gradient(315deg, #768948 3%, #1E2F23 38%, #34623F 68%, #53FF45 98%)'
+  }
+  if (paint.color === 'Blue') {
+    return 'linear-gradient(315deg, #0D3B66 3%, #81C3D7 38%, #016FB9 68%, #1AFFD5 98%)'
+  }
+  if (paint.color === 'Violet') {
+    return 'linear-gradient(315deg, #7D83FF 3%, #820263 38%, #291720 68%, #9046CF 98%)'
+  }
+  if (paint.color === 'Magenta') {
+    return 'linear-gradient(315deg, #CC59D2 3%, #F487B6 38%, #F15152 68%, #FF579F 98%)'
+  }
+  if (paint.color === 'Earth') {
+    return 'linear-gradient(315deg, #494331 3%, #D6D6B1 38%, #251101 68%, #69140E 98%)'
+  }
+  if (paint.color === 'Black') {
+    return 'linear-gradient(315deg, #484349 3%, #000000 38%, #595457 68%, #454545 98%)'
+  }
+  if (paint.color === 'White') {
+    return 'linear-gradient(315deg, #F1FFFA 3%, #E6E8E6 38%, #CED0CE 68%, #FFFFFF 98%)'
+  }
+  if (paint.color === 'Metalic/Other') {
+    return 'linear-gradient(315deg, #72DDF7 3%, #B388EB 38%, #4CB944 68%, #D741A7 98%)'
+  }
+  else {
+    return 'linear-gradient(315deg, #C2CFB2 3%, #6320EE 38%, #231F20 68%, #8075FF 98%)'
+  }
+}
+
 const modifyColor = (paint: Paint): string => {
   if (paint.color === 'Black') {
     return 'Black/Grey'
@@ -154,21 +193,25 @@ const PaintCard = (props: PaintCardProps): JSX.Element => {
         <h2 className="stat">Staining: {romanNumeral(staining(paint))}</h2>
       </div>
       <h2 className="brand">Brand: {paint.brand}</h2>
-      {paint.profileId === user?.profile.id && paint.id ?  (
-      <>
-        <UpdatePaint handleUpdatePaint={handleUpdatePaint} user={user} paint={paint} key={paint.profileId} setPaintAssociated={setPaintAssociated}/>
-      </>
-      )
-    :
-      (
+      <div className="color-swatch" style={{background: colorSwatch(paint), animation: 'gradient 10s ease infinite', backgroundSize: '400% 400%', backgroundAttachment: 'fixed'}}></div>
+      <div>
+        {paint.profileId === user?.profile.id && paint.id ?  (
         <>
+          <UpdatePaint handleUpdatePaint={handleUpdatePaint} user={user} paint={paint} key={paint.profileId} setPaintAssociated={setPaintAssociated}/>
         </>
-      )
-    }
-    {user ? (
-      <>
-        <AddToPalette palettes={palettes} paint={paint} user={user} setPalettes={setPalettes} setPaintAssociated={setPaintAssociated} paintAssociated={paintAssociated} key={paint.name}/>
-      </>) : (<> </>)}
+        )
+      :
+        (
+          <>
+          </>
+        )
+      }
+      {user ? (
+        <>
+          <AddToPalette palettes={palettes} paint={paint} user={user} setPalettes={setPalettes} setPaintAssociated={setPaintAssociated} paintAssociated={paintAssociated} key={paint.name}/>
+        </>) : (<> </>)}
+
+      </div>
 
     </div>
     </>

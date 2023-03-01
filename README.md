@@ -24,10 +24,12 @@ Colorizz is a simple app catering to the watercolor community, which lets you ke
 ## Future Enhancements [Ice Box]
 
 - [ ] Allow users to create paint mixtures
-- [ ] Styling improvements
+- [ ] Styling improvements.
 - [ ] Allow users to comment on uses of paints and mixtures
-- [ ] Introduce a blog section
+- [ ] Introduce a blog section.
 - [ ] Create an informational section for those new to watercolors, giving them information on where to get started, helping them pick their first paints, linking to other resources, etc.
+- [ ] Add search functionality, to find paints that have already been created.
+- [ ] Allow users to post photos of their artwork, along with the paints/palettes that they used.
 
 ## Credit
 
