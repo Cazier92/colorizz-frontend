@@ -151,7 +151,7 @@ const colorSwatch = (paint: Paint): string => {
     return 'linear-gradient(315deg, #CC59D2 3%, #F487B6 38%, #F15152 68%, #FF579F 98%)'
   }
   if (paint.color === 'Earth') {
-    return 'linear-gradient(315deg, #494331 3%, #D6D6B1 38%, #251101 68%, #69140E 98%)'
+    return 'linear-gradient(315deg, #494331 3%, #FEB800 38%, #8F250C 68%, #69140E 98%)'
   }
   if (paint.color === 'Black') {
     return 'linear-gradient(315deg, #484349 3%, #000000 38%, #595457 68%, #454545 98%)'
