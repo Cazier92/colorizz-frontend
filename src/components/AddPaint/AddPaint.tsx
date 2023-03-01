@@ -124,7 +124,7 @@ const AddPaint = (props: AddPaintProps): JSX.Element => {
     
     </>) : (<>
       <div className="button-div">
-        <button onClick={handleClick}>Add Paint</button>
+        <button onClick={handleClick} className='add-paint-btn'>Add Paint</button>
       </div>
     </>)}
     </>

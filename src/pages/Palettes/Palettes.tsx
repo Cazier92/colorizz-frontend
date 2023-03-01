@@ -56,16 +56,16 @@ const Palettes = (props: PalettesProps): JSX.Element => {
 
   return (
     <main className='palettes-main'>
-      {(palettes.length ? (<>
-        {user
-        ? 
-        (
+      {user
+      ? 
+      (
         <div className='create-palette-div'>
           <CreatePalette user={user} handleCreatePalette={handleCreatePalette}/>
         </div>
-        ) 
-        : 
-        (<> </>)}
+      ) 
+      : 
+      (<> </>)}
+      {(palettes.length ? (<>
         {palettes.map((palette) => 
           <div className='palette-card'>
             {palette.name ? (

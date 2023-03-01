@@ -15,6 +15,12 @@
   margin: 2vmin;
 }
 
+.add-paint-btn {
+  /* min-width: 10vmin;
+  min-height: 2vmin; */
+  /* font-size: 2vmin; */
+}
+
 form {
   display: flex;
   flex-direction: column;
