@@ -56,6 +56,11 @@ const Palettes = (props: PalettesProps): JSX.Element => {
 
   return (
     <main className='palettes-main'>
+      <div>
+        <div className="wave"></div>
+        <div className="wave"></div>
+        <div className="wave"></div>
+      </div>
       {user
       ? 
       (
@@ -87,7 +92,7 @@ const Palettes = (props: PalettesProps): JSX.Element => {
             )}
           </div>
         )}
-      </>) : (<><h1>Loading...</h1></>))}
+      </>) : (<><h1>Please Create a Palette to get Started</h1></>))}
     </main>
   )
 }

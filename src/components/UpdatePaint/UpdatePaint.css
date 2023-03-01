@@ -16,4 +16,17 @@
   width: 100%;
   align-items: flex-start;
   /* margin-left: 5vmin; */
+  gap: 1vmin;
+}
+
+.update-btn {
+  margin-right: 2vmin;
+}
+
+.discard-btn {
+  margin-bottom: 2vmin;
+}
+
+.submit-update-btn {
+  margin-top: 1vmin;
 }

@@ -58,22 +58,93 @@ const decideBoxColor = (paint: Paint): string => {
   }
 }
 
+const decideBorderColor = (paint: Paint): string => {
+  if (paint.color === 'Red') {
+    return '#FF3014 3px solid'
+  }
+  if (paint.color === 'Orange') {
+    return '#FEB800 3px solid'
+  }
+  if (paint.color === 'Yellow') {
+    return '#E4FF1A 3px solid'
+  }
+  if (paint.color === 'Green') {
+    return '#6EEB83 3px solid'
+  }
+  if (paint.color === 'Blue') {
+    return '#1BE7FF 3px solid'
+  }
+  if (paint.color === 'Violet') {
+    return '#9B7EDE 3px solid'
+  }
+  if (paint.color === 'Magenta') {
+    return '#E40066 3px solid'
+  }
+  if (paint.color === 'Earth') {
+    return '#DEA47E 3px solid'
+  }
+  if (paint.color === 'Black') {
+    return '#000000 3px solid'
+  }
+  if (paint.color === 'White') {
+    return '#FFFFFF 3px solid'
+  }
+  if (paint.color === 'Metalic/Other') {
+    return '#1EA896 3px solid'
+  }
+  else {
+    return '#1BE7FF 3px solid'
+  }
+}
+
+const transparency = (paint: Paint): number | undefined => {
+  if (paint.transparency !== undefined)
+  return paint.transparency +1
+}
+const granulation = (paint: Paint): number | undefined => {
+  if (paint.granulation !== undefined)
+  return paint.granulation +1
+}
+const staining = (paint: Paint): number | undefined => {
+  if (paint.staining !== undefined)
+  return paint.staining +1
+}
+
+const romanNumeral = (x: number | undefined) => {
+  if (x === 1) {
+    return 'I'
+  }
+  if (x === 2) {
+    return 'II'
+  }
+  if (x === 3) {
+    return 'III'
+  }
+  if (x === 4) {
+    return 'IV'
+  }
+  if (x === 5) {
+    return 'V'
+  }
+}
+
 const PaintCard = (props: PaintCardProps): JSX.Element => {
   const {paint, handleUpdatePaint, user, palettes, setPalettes, setPaintAssociated, paintAssociated} = props
 
 
   return (
     <>
-    <div className="paint-card" style={{ boxShadow: decideBoxColor(paint)}}>
+    <div className="paint-card" style={{ boxShadow: decideBoxColor(paint), border: decideBorderColor(paint)}}>
       <h1>{paint.name}</h1>
       <h2>{paint.color}</h2>
       <h2>{paint.pigment_code} {paint.pigment_number}</h2>
-      <h2>Transparency: {paint.transparency}</h2>
-      <h2>Granulation: {paint.granulation}</h2>
-      <h2>Staining: {paint.staining}</h2>
+      <h2>Transparency: {romanNumeral(transparency(paint))}</h2>
+      <h2>Granulation: {romanNumeral(granulation(paint))}</h2>
+      <h2>Staining: {romanNumeral(staining(paint))}</h2>
+      <h2>Brand: {paint.brand}</h2>
       {paint.profileId === user?.profile.id && paint.id ?  (
       <>
-        <UpdatePaint handleUpdatePaint={handleUpdatePaint} user={user} paint={paint} key={paint.profileId}/>
+        <UpdatePaint handleUpdatePaint={handleUpdatePaint} user={user} paint={paint} key={paint.profileId} setPaintAssociated={setPaintAssociated}/>
       </>
       )
     :

@@ -18,13 +18,13 @@ const AddPaint = (props: AddPaintProps): JSX.Element => {
 
   const [form, setForm] = useState<PaintFormData>({
     name: '',
-    // pigment_code: undefined,
-    // pigment_number: undefined,
+    pigment_code: 'PR',
+    pigment_number: 0,
     color: '',
-    // transparency: undefined,
-    // staining: undefined,
-    // granulation: undefined,
-    // brand: undefined,
+    transparency: 0,
+    staining: 0,
+    granulation: 0,
+    brand: '',
     profileId: user.profile.id,
   })
 
@@ -91,32 +91,33 @@ const AddPaint = (props: AddPaintProps): JSX.Element => {
           <option value="PW">PW</option>
           <option value="PM">PM</option>
         </select>
-        <label htmlFor="pigment_number-input">Pigment Number:</label>
+        <label htmlFor="pigment_number-input">Pigment Number: (0 if not applicable)</label>
         <input type="number" name="pigment_number" id="pigment_number-input" value={form.pigment_number} onChange={handleChange}/>
-        <input type="text" name="brand" placeholder="Brand Name" value={form.brand} onChange={handleChange}/>
-        <label htmlFor="transparency-select">Transparency: (0=Opaque, 4=Transparent)</label>
+        <label htmlFor="brand-input">Brand:</label>
+        <input type="text" name="brand" placeholder="Brand Name" value={form.brand} onChange={handleChange} id='brand-input'/>
+        <label htmlFor="transparency-select">Transparency: (I=Opaque, V=Transparent)</label>
         <select name="transparency" id="transparency-select" value={form.transparency} onChange={handleChange}>
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
+          <option value="0">I</option>
+          <option value="1">II</option>
+          <option value="2">III</option>
+          <option value="3">IV</option>
+          <option value="4">V</option>
         </select>
-        <label htmlFor="staining-select">Staining: (0=Non-Staining, 4=Heavily-Staining)</label>
+        <label htmlFor="staining-select">Staining: (I=Non-Staining, V=Heavily-Staining)</label>
         <select name="staining" id="staining-select" value={form.staining} onChange={handleChange}>
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
+        <option value="0">I</option>
+          <option value="1">II</option>
+          <option value="2">III</option>
+          <option value="3">IV</option>
+          <option value="4">V</option>
         </select>
-        <label htmlFor="granulation-select">Granulation: (0=Smooth, 4=Heavy Granulation)</label>
+        <label htmlFor="granulation-select">Granulation: (I=Smooth, V=Heavy Granulation)</label>
         <select name="granulation" id="granulation-select" value={form.granulation} onChange={handleChange}>
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
+        <option value="0">I</option>
+          <option value="1">II</option>
+          <option value="2">III</option>
+          <option value="3">IV</option>
+          <option value="4">V</option>
         </select>
         <button type="submit" className="submit-button">SUBMIT</button>
       </form>

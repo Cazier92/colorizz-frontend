@@ -30,7 +30,7 @@ export interface Paint {
   transparency?: number;
   staining?: number;
   granulation?: number;
-  brand?: number;
+  brand?: string;
   // profileId: {id: number};
   profileId: number;
   createdAt?: string;

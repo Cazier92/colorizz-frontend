@@ -8,7 +8,7 @@ export interface PaintFormData {
   transparency?: number;
   staining?: number;
   granulation?: number;
-  brand?: number;
+  brand?: string;
   profileId: number;
 }
 

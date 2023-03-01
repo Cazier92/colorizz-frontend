@@ -32,3 +32,10 @@ li {
 .link:hover {
   background-color: #1BE7FFFF;
 }
+
+.logo-link {
+  max-height: 4vmin;
+  background-color: grey;
+  border-radius: 50%;
+}
+

@@ -8,14 +8,15 @@ import './UpdatePaint.css'
 
 interface UpdatePaintProps {
   handleUpdatePaint: (formData: PaintFormData, paint: Paint) => void;
-  user: User
-  paint: Paint
+  user: User;
+  paint: Paint;
+  setPaintAssociated: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 
 
 const UpdatePaint = (props: UpdatePaintProps): JSX.Element => {
-  const {handleUpdatePaint, user, paint} = props
+  const {handleUpdatePaint, user, paint, setPaintAssociated} = props
   const [showUpdate, setShowUpdate] = useState<boolean>(false)
 
   const [form, setForm] = useState<PaintFormData>({
@@ -41,7 +42,7 @@ const UpdatePaint = (props: UpdatePaintProps): JSX.Element => {
     // console.log(form)
     try {
       handleUpdatePaint(form, paint)
-
+      setPaintAssociated(true)
     } catch (err) {
       console.log(err)
     }
@@ -53,13 +54,13 @@ const UpdatePaint = (props: UpdatePaintProps): JSX.Element => {
 
   if (showUpdate === false) {
     return (
-      <button onClick={handleUpdateButton}>Update Paint</button>
+      <button onClick={handleUpdateButton} className='update-btn'>Update Paint</button>
     )
   } else {
     return (
       <div className="update-paint-div">
         <h3>Update Paint:</h3>
-        <button onClick={handleUpdateButton}>Discard Changes</button>
+        <button onClick={handleUpdateButton} className='discard-btn'>Discard Changes</button>
         <form onSubmit={handleSubmit} className='update-paint-form'>
           <input type="text" name="name" required value={form.name} onChange={handleChange} />
           <select required name="color" id="color-select" value={form.color} onChange={handleChange}>
@@ -90,34 +91,34 @@ const UpdatePaint = (props: UpdatePaintProps): JSX.Element => {
             <option value="PW">PW</option>
             <option value="PM">PM</option>
           </select>
-          <label htmlFor="pigment_number-input">Pigment Number:</label>
+          <label htmlFor="pigment_number-input">Pigment Number: (0 if not applicable)</label>
           <input type="number" name="pigment_number" id="pigment_number-input" value={form.pigment_number} onChange={handleChange}/>
           <input type="text" name="brand" placeholder="Brand Name" value={form.brand} onChange={handleChange}/>
-          <label htmlFor="transparency-select">Transparency: (0=Opaque, 4=Transparent)</label>
+          <label htmlFor="transparency-select">Transparency: (I=Opaque, V=Transparent)</label>
           <select name="transparency" id="transparency-select" value={form.transparency} onChange={handleChange}>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
+          <option value="0">I</option>
+          <option value="1">II</option>
+          <option value="2">III</option>
+          <option value="3">IV</option>
+          <option value="4">V</option>
           </select>
-          <label htmlFor="staining-select">Staining: (0=Non-Staining, 4=Heavily-Staining)</label>
+          <label htmlFor="staining-select">Staining: (I=Non-Staining, V=Heavily-Staining)</label>
           <select name="staining" id="staining-select" value={form.staining} onChange={handleChange}>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
+          <option value="0">I</option>
+          <option value="1">II</option>
+          <option value="2">III</option>
+          <option value="3">IV</option>
+          <option value="4">V</option>
           </select>
-          <label htmlFor="granulation-select">Granulation: (0=Smooth, 4=Heavy Granulation)</label>
+          <label htmlFor="granulation-select">Granulation: (I=Smooth, V=Heavy Granulation)</label>
           <select name="granulation" id="granulation-select" value={form.granulation} onChange={handleChange}>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
+          <option value="0">I</option>
+          <option value="1">II</option>
+          <option value="2">III</option>
+          <option value="3">IV</option>
+          <option value="4">V</option>
           </select>
-          <button type="submit">SUBMIT</button>
+          <button type="submit" className="submit-update-btn" onClick={handleUpdateButton}>SUBMIT</button>
         </form>
       </div>
     )

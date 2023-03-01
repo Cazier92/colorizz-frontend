@@ -18,6 +18,11 @@ const Landing = (props: LandingProps): JSX.Element => {
       <h1>Colorizz</h1>
       <img src={Logo} alt="Ven Diagram of colors logo" className={styles.logo}/>
       <h3>{user ? `Hello ${user.name}` : ''}</h3>
+      <div>
+        <div className={styles.wave}></div>
+        <div className={styles.wave}></div>
+        <div className={styles.wave}></div>
+  </div>
     </main>
   )
 }
