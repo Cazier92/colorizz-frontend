@@ -6,13 +6,14 @@ import { User } from "../../types/models";
 
 interface AddPaintProps {
   handleAddPaint: (formData: PaintFormData) => void;
-  user: User
+  user: User;
+  setPaintAssociated: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 import './AddPaint.css'
 
 const AddPaint = (props: AddPaintProps): JSX.Element => {
-  const {handleAddPaint, user} = props
+  const {handleAddPaint, user, setPaintAssociated} = props
   const [showAdd, setShowAdd] = useState<boolean>(false)
 
   const [form, setForm] = useState<PaintFormData>({
@@ -38,7 +39,15 @@ const AddPaint = (props: AddPaintProps): JSX.Element => {
     console.log(form)
     try {
       handleAddPaint(form)
-
+      // setForm({
+      //   name: '',
+      //   color: '',
+      //   pigment_number: 0,
+      //   brand: undefined,
+      //   profileId: user.profile.id,
+      // })
+      setShowAdd(false)
+      setPaintAssociated(true)
     } catch (err) {
       console.log(err)
     }

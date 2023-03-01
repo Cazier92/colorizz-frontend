@@ -61,7 +61,7 @@ const AddToPalette = (props: AddToPaletteProps): JSX.Element => {
       </form> */}
       {palettes.map((palette) => 
         <div>
-          <AddToPalBtn palette={palette} paint={paint} handleAssociatePaint={handleAssociatePaint} setPaintAssociated={setPaintAssociated} paintAssociated={paintAssociated} key={palette.id}/>
+          <AddToPalBtn palette={palette} paint={paint} handleAssociatePaint={handleAssociatePaint} setPaintAssociated={setPaintAssociated} paintAssociated={paintAssociated} key={palette.id} setShowPalettes={setShowPalettes}/>
         </div>
       )}
     </>) : (<>

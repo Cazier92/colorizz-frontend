@@ -19,13 +19,52 @@ interface PaintCardProps {
   paintAssociated: boolean;
 }
 
+const decideBoxColor = (paint: Paint): string => {
+  if (paint.color === 'Red') {
+    return '#FF3014 0px 0px 18px'
+  }
+  if (paint.color === 'Orange') {
+    return '#FEB800 0px 0px 15px'
+  }
+  if (paint.color === 'Yellow') {
+    return '#E4FF1A 0px 0px 15px'
+  }
+  if (paint.color === 'Green') {
+    return '#6EEB83 0px 0px 15px'
+  }
+  if (paint.color === 'Blue') {
+    return '#1BE7FF 0px 0px 15px'
+  }
+  if (paint.color === 'Violet') {
+    return '#9B7EDE 0px 0px 15px'
+  }
+  if (paint.color === 'Magenta') {
+    return '#E40066 0px 0px 15px'
+  }
+  if (paint.color === 'Earth') {
+    return '#DEA47E 0px 0px 20px'
+  }
+  if (paint.color === 'Black') {
+    return '#000000 0px 0px 15px'
+  }
+  if (paint.color === 'White') {
+    return '#FFFFFF 0px 0px 15px'
+  }
+  if (paint.color === 'Metalic/Other') {
+    return '#1EA896 0px 0px 15px'
+  }
+  else {
+    return '#1BE7FF 0px 0px 15px'
+  }
+}
+
 const PaintCard = (props: PaintCardProps): JSX.Element => {
   const {paint, handleUpdatePaint, user, palettes, setPalettes, setPaintAssociated, paintAssociated} = props
 
 
   return (
     <>
-    <div className="paint-card">
+    <div className="paint-card" style={{ boxShadow: decideBoxColor(paint)}}>
       <h1>{paint.name}</h1>
       <h2>{paint.color}</h2>
       <h2>{paint.pigment_code} {paint.pigment_number}</h2>

@@ -19,17 +19,17 @@ const NavBar = (props: NavBarProps): JSX.Element => {
       {user ?
         <ul>
           <li>Welcome, {user.name}</li>
-          <li><NavLink to="/profiles">Profiles</NavLink></li>
-          <li><NavLink to="/change-password">Change Password</NavLink></li>
-          <li><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
-          <li><NavLink to="/paints">Paints</NavLink></li>
-          <li><NavLink to="/palettes">Your Palettes</NavLink></li>
+          {/* <li><NavLink to="/profiles" className={'link'}>Profiles</NavLink></li> */}
+          <li><NavLink to="/change-password" className={'link'}>Change Password</NavLink></li>
+          <li><NavLink to="" onClick={handleLogout} className={'link'}>LOG OUT</NavLink></li>
+          <li><NavLink to="/paints" className={'link'}>Paints</NavLink></li>
+          <li><NavLink to="/palettes" className={'link'}>Your Palettes</NavLink></li>
         </ul>
       :
         <ul>
-          <li><NavLink to="/login">Log In</NavLink></li>
-          <li><NavLink to="/signup">Sign Up</NavLink></li>
-          <li><NavLink to="/paints">Paints</NavLink></li>
+          <li><NavLink to="/login" className={'link'}>Log In</NavLink></li>
+          <li><NavLink to="/signup" className={'link'}>Sign Up</NavLink></li>
+          <li><NavLink to="/paints" className={'link'}>Paints</NavLink></li>
         </ul>
       }
     </nav>

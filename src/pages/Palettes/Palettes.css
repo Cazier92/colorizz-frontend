@@ -8,6 +8,7 @@
   flex-direction: column;
   align-items: flex-start;
   align-content: space-around;
+  box-shadow: #FFFFFFCF 0px 0px 15px;
 }
 
 .palette-name {

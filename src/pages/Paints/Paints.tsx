@@ -42,7 +42,11 @@ const Paints = (props: PaintsProps): JSX.Element => {
       }
     }
     fetchPaints()
-  }, [])
+    if (paintAssociated === true) {
+      fetchPaints()
+      setPaintAssociated(false)
+    }
+  }, [paintAssociated])
 
   // useEffect((): void => {
   //   if (paints.length) {
@@ -108,22 +112,29 @@ const Paints = (props: PaintsProps): JSX.Element => {
   return (
     <>
     <main className='paint-main'>
-      {user ?  (
-        <div className='add-paint-div'>
-          <AddPaint handleAddPaint={handleAddPaint} user={user} key={"addPaint"}/>
-        </div>
-        )
-      :
-        (
-          <>
-          </>
-        )
-      }
-      {paints.map((paint) => 
-        <div className='paint-card-div'>
-          <PaintCard key={paint.id} paint={paint} handleUpdatePaint={handleUpdatePaint} user={user} palettes={palettes} setPalettes={setPalettes} setPaintAssociated={setPaintAssociated} paintAssociated={paintAssociated}/>
-        </div>
-      )}
+      {(paints.length ? (
+        <>
+          {user ?  (
+            <div className='add-paint-div'>
+              <AddPaint handleAddPaint={handleAddPaint} user={user} key={"addPaint"} setPaintAssociated={setPaintAssociated}/>
+            </div>
+            )
+          :
+            (
+              <>
+              </>
+            )
+          }
+          {paints.map((paint) => 
+            <div className='paint-card-div'>
+              <PaintCard key={paint.id} paint={paint} handleUpdatePaint={handleUpdatePaint} user={user} palettes={palettes} setPalettes={setPalettes} setPaintAssociated={setPaintAssociated} paintAssociated={paintAssociated}/>
+            </div>
+          )}
+        </>
+
+      ) : (
+        <h1>Loading...</h1>
+      ))}
     </main>
     </>
   )

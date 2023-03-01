@@ -56,36 +56,38 @@ const Palettes = (props: PalettesProps): JSX.Element => {
 
   return (
     <main className='palettes-main'>
-    {user
-    ? 
-    (
-    <div className='create-palette-div'>
-      <CreatePalette user={user} handleCreatePalette={handleCreatePalette}/>
-    </div>
-    ) 
-    : 
-    (<> </>)}
-    {palettes.map((palette) => 
-      <div className='palette-card'>
-        {palette.name ? (
-          <h1 className='palette-name'>{palette.name}</h1>
-        )
-        :
+      {(palettes.length ? (<>
+        {user
+        ? 
         (
-          <h1 className='palette-name'>Palette {palette.id}</h1>
-        )
-        }
-        {palette.paints?.map((paint) => 
-          <>
-          
-          <div className='palette-paint'>
-            {/* <h1>{paint.name}</h1> */}
-            <RemovePaintBtn palette={palette} paint={paint} handleRemovePaint={handleRemovePaint}/>
+        <div className='create-palette-div'>
+          <CreatePalette user={user} handleCreatePalette={handleCreatePalette}/>
+        </div>
+        ) 
+        : 
+        (<> </>)}
+        {palettes.map((palette) => 
+          <div className='palette-card'>
+            {palette.name ? (
+              <h1 className='palette-name'>{palette.name}</h1>
+            )
+            :
+            (
+              <h1 className='palette-name'>Palette {palette.id}</h1>
+            )
+            }
+            {palette.paints?.map((paint) => 
+              <>
+              
+              <div className='palette-paint'>
+                {/* <h1>{paint.name}</h1> */}
+                <RemovePaintBtn palette={palette} paint={paint} handleRemovePaint={handleRemovePaint}/>
+              </div>
+              </>
+            )}
           </div>
-          </>
         )}
-      </div>
-    )}
+      </>) : (<><h1>Loading...</h1></>))}
     </main>
   )
 }
