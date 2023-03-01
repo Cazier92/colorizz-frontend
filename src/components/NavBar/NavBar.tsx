@@ -26,7 +26,7 @@ const NavBar = (props: NavBarProps): JSX.Element => {
           {userProfile !== undefined ? (
             <li className='avatar-li'><img src={userProfile.photo} alt="user avatar" className='avatar'/></li>
           ) : (<></>)}
-          <li>Welcome, {user.name}</li>
+          <li>{user.name}</li>
           <li><NavLink to="/change-password" className={'link'}>Change Password</NavLink></li>
           <li><NavLink to="/" className={'link-for-logo'}><img src={Logo} className='logo-link'/></NavLink></li>
           <li><NavLink to="" onClick={handleLogout} className={'link'}>LOG OUT</NavLink></li>
