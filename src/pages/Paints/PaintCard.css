@@ -9,6 +9,7 @@
 .paint-name {
   margin: 0;
   font-size: 5vmin;
+  font-family: 'Finger Paint', cursive;
 }
 
 .color-stats {
@@ -18,6 +19,7 @@
   align-items: center;
   justify-content: center;
   font-size: 2vmin;
+  font-family: 'Finger Paint', cursive;
 }
 
 .paint-stats {
@@ -26,12 +28,17 @@
   gap: 3vmin;
   align-items: center;
   justify-content: center;
-  font-size: 2vmin;
+  font-family: 'Finger Paint', cursive;
 }
 
 .stat {
   max-width: 33%;
   margin: 0;
   display: inline;
-  
+  font-size: 2.5vmin;
+}
+
+.brand {
+  font-family: 'Finger Paint', cursive;
+  font-size: 2vmin;
 }
