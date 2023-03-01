@@ -27,7 +27,7 @@ li {
   font-weight: 500;
   padding: 1vmin;
   border-radius: 5px;
-  
+  font-size: 2vmin;
 }
 
 .link:hover {

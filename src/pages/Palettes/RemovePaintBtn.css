@@ -15,6 +15,7 @@
 .paint-label {
   width: 95%;
   margin-left: 0vmin;
+  font-size: 2vmin;
 }
 
 #remove-btn {
