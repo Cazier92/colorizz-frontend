@@ -1,6 +1,15 @@
-nav {
+.logged-in {
   background-color: #1BE7FF9F;
   height: 7vh;
+  margin: 0;
+}
+
+.logged-out {
+  background-color: #1BE7FF9F;
+  height: 6vmin;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: space-around; */
   margin: 0;
 }
 
@@ -19,6 +28,14 @@ li {
   color: black;
   font-weight: 500;
   font-size: 2vmin;
+}
+
+.logged-out > ul {
+  margin: 0;
+}
+
+.logged-out > ul > li {
+  margin-top: 1vmin;
 }
 
 .link {
@@ -48,6 +65,10 @@ li {
   min-height: 5vmin;
   object-fit: cover;
   align-self: center;
+}
+
+.logged-out {
+  align-items: center;
 }
 
 @media screen and (max-width: 620px){
