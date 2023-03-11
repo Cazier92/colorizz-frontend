@@ -97,6 +97,16 @@ function App(): JSX.Element {
     }
   }
 
+  const handleDeletePalette = async(palette: Palette): Promise<void> => {
+    try {
+      if (user !== null)
+      await paletteService.deletePalette(palette)
+      setPaintAssociated(true)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   return (
     <>
@@ -130,7 +140,7 @@ function App(): JSX.Element {
           path="/palettes"
           element={
             <ProtectedRoute user={user}>
-              <Palettes user={user} palettes={palettes} paintAssociated={paintAssociated} setPaintAssociated={setPaintAssociated} handleCreatePalette={handleCreatePalette}/>
+              <Palettes user={user} palettes={palettes} paintAssociated={paintAssociated} setPaintAssociated={setPaintAssociated} handleCreatePalette={handleCreatePalette} handleDeletePalette={handleDeletePalette}/>
             </ProtectedRoute>
           }
         />

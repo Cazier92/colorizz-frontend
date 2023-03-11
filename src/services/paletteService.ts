@@ -73,9 +73,26 @@ async function removePaint(palette: Palette, paint: Paint): Promise<Palette> {
   }
 }
 
+async function deletePalette(palette: Palette): Promise<Palette> {
+  try {
+    const paletteId = palette.id
+    const res = await fetch(`${BASE_URL}/${paletteId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        "Content-Type": "application/json",
+      }
+    })
+    return await res.json() as Palette
+  } catch (error) {
+    throw error
+  }
+}
+
 export {
   getAllPalettes,
   createPalette,
   associatePaint,
   removePaint,
+  deletePalette,
 }

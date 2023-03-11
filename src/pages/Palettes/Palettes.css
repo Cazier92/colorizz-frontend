@@ -10,11 +10,42 @@
   align-content: space-around;
   box-shadow: #FFFFFFCF 0px 0px 20px;
   font-family: 'Finger Paint', cursive;
+  position: relative;
 }
 
 .palette-name {
   align-self: center;
   font-size: 4vmin;
+}
+
+.delete-palette-btn {
+  z-index: 2;
+  margin-left: 90%;
+  display: inline-flex;
+}
+
+
+.confirm-delete {
+  color: red;
+  margin-right: 2vmin;
+}
+
+.cancel-delete {
+  color: white;
+}
+
+.warning-div {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: #000000AA;
+  color: red;
+  align-self: center;
+  margin-top: 2vmin;
+  border-radius: 10px;
+  padding: 2vmin;
+  border: 5px solid red;
 }
 
 .palette-paint {
