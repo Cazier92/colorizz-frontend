@@ -16,3 +16,7 @@
 .paint-card-div {
   width: 80%;
 }
+
+.paint-card-div:hover {
+  width: 85%;
+}
